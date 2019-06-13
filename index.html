@@ -1,0 +1,32 @@
+#example
+  progress-ring(radius='180', stroke='14', :progress='progress')
+  input.ctrl(v-model='progress' type='range')
+  
+  .btn-group
+    button(@click='autoDemo') Auto
+    button(@click='setProgress(0)') 0
+    button(@click='setProgress(10)') 10
+    button(@click='setProgress(25)') 25
+    button(@click='setProgress(50)') 50
+    button(@click='setProgress(75)') 75
+    button(@click='setProgress(100)') 100
+
+script#progress-ring-template(type='text/x-template')
+
+  .progress-ring(:data-progress='progress', :style='{"--height": radius + "px"}')
+    svg(
+      :height='radius * 2',
+      :width='radius * 2'
+    )
+      circle()
+      circle(
+        stroke='white',
+        fill='transparent',
+        stroke-linecap='round',
+        :stroke-dasharray='circumference + \' \' + circumference',
+        :style='{ strokeDashoffset: strokeDashoffset }',
+        :stroke-width='stroke',
+        :r='normalizedRadius',
+        :cx='radius',
+        :cy='radius'
+      )
