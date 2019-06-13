@@ -1,0 +1,49 @@
+html, body
+  background-color #36f
+  display flex
+  align-items center
+  justify-content center
+  height 100%
+  position relative
+  font-family 'Fira Sans', 'Noto', 'Open Sans', sans-serif
+  font-size 14pt
+
+button
+  padding .3em .5em
+  border-radius .3em
+  background transparent
+  color white
+  border .1em solid
+  min-width 3em
+  cursor pointer
+
+.ctrl
+  width 100%
+  margin 1em auto
+
+.btn-group
+  display flex
+  justify-content space-around
+
+.progress-ring
+  position relative
+  font-weight 500
+  font-size calc( var(--height) * .7)
+  line-height calc( var(--height) * 2)
+  color white
+
+  &:before
+    content attr(data-progress)
+    position absolute
+    left 0
+    top 0
+    bottom 0
+    right 0
+    text-align center
+
+  circle
+    stroke white
+    fill transparent
+    transition stroke-dashoffset 0.5s
+    transform rotate(-90deg)
+    transform-origin 50% 50%
